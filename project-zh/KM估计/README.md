@@ -6,11 +6,11 @@ Kaplan-Meier估计（KM估计）是一种用来分析生存数据的非参数统
 
 ## R和Python相关包介绍
 
-R包：
+R包（R版本为4.4.2）：
 - survival（3.8-3）：用于生存分析，包括创建生存对象 (Surv) 和拟合Kaplan-Meier生存曲线 (survfit)。
 - survminer（0.5.0）：用于绘制生存曲线图 (ggsurvplot)，提供了丰富的图形定制选项。
 
-Python包：
+Python包（Python版本为3.11.5）：
 - lifelines（0.30.0）： 是一个用于生存分析的 Python 库，在 Kaplan-Meier (KM) 估计中的作用是提供简单易用的接口来拟合和可视化生存曲线，支持对时间事件数据的非参数生存分析。
 
 ## R语言和Python效果对比
