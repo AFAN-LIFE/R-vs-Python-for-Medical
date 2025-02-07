@@ -1,4 +1,4 @@
-# Kaplan-Meier估计
+# KM估计
 
 Kaplan-Meier估计（KM估计）是一种用来分析生存数据的非参数统计方法，用于估计事件发生的生存概率随时间的变化。在医疗建模中，KM估计常用于分析患者在特定治疗或疾病状态下的生存率。
 
@@ -19,13 +19,15 @@ Python包：
 
 对比结果：
 
-<div style="display: flex; justify-content: space-between;">
-    <div style="width: 48%; text-align: center;">
-        <img src="result/R.jpg" alt="R" style="width: 100%; height: auto;">
-        <p>R结果</p>
-    </div>
-    <div style="width: 48%; text-align: center;">
-        <img src="result/Python.jpg" alt="Python" style="width: 100%; height: auto;">
-        <p>Python结果</p>
-    </div>
-</div>
+<table>
+  <tr>
+    <td style="text-align: center;">
+      <img src="result/R.jpg" alt="R" width="300">
+      <p>R结果</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="result/Python.jpg" alt="Python" width="300">
+      <p>Python结果</p>
+    </td>
+  </tr>
+</table>
