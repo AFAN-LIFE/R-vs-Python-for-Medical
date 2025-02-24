@@ -4,29 +4,43 @@
 
 例如，在疾病风险预测中，校准曲线可以帮助判断模型预测的风险是否与患者实际发病率相符，从而评估模型在临床中的可靠性。
 
-## R和Python相关包介绍
+## R和Python核心包介绍
 
 R包（R版本为4.4.2）：
+- rms（7.0-0）包内置校准曲线功能，可以基于构建的逻辑回归模型快速绘制校准曲线
 
 Python包（Python版本为3.11.5）：
-- scikit-learn（1.5.2）：提供 calibration_curve 计算预测概率的分箱结果，以及 CalibratedClassifierCV 进行概率校准，使校准曲线更接近理想情况。
-- matplotlib（3.8.0）：用于绘制校准曲线，通过可视化模型预测概率与真实概率的偏差，辅助评估模型的概率输出质量。
+- statsmodels（0.14.4）：用于逻辑回归建模，以及lowess平滑函数
+- matplotlib（3.8.0）：用于基于计算结果绘制校准曲线
+- scipy（1.11.1）：用于对lowess函数平滑结果进行插值
 
 ## R语言和Python效果对比
 
 详细代码：[R代码](./R.ipynb) [Python代码](./Python.ipynb)
 
-对比结果：
+对比结论：校准曲线的Apparent结果完全一致，如果需要复现另一条Corrected采样的结果，由于R语言和Python底层函数方法的不同，对于rms中采样的校准曲线复现难度较大，存在微弱差异无法对齐，正在持续进行中...
+
+对比过程：
 
 <table>
   <tr>
     <td style="text-align: center;">
-      <img src="result/R.jpg" alt="R" width="300">
-      <p>R结果</p>
+      <img src="result/R_plot.jpg" alt="R" width="300">
+      <p>R画图结果</p>
     </td>
     <td style="text-align: center;">
-      <img src="result/Python.jpg" alt="Python" width="300">
-      <p>Python结果</p>
+      <img src="result/Python_plot.jpg" alt="Python" width="300">
+      <p>Python画图结果</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <img src="result/R_value.jpg" alt="R" width="300">
+      <p>R关键点位</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="result/Python_value.jpg" alt="Python" width="300">
+      <p>Python关键点位</p>
     </td>
   </tr>
 </table>

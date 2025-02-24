@@ -1,17 +1,17 @@
 # ROC曲线
 
-ROC曲线（Receiver Operating Characteristic Curve）通过不同预测阈值下的敏感性（True Positive Rate）和特异性的互补值（1-Specificity）来评估模型的分类性能。在医疗建模中，ROC曲线广泛用于评估疾病筛查或诊断模型的能力。
+列线图（Nomogram）是一种基于线性回归、逻辑回归模型的直观工具，用于将统计学模型的预测结果转化为个体化的风险评估。
 
-例如预测某种癌症的风险。曲线下面积（AUC）越大，表示模型对阳性和阴性样本的区分能力越强，从而帮助医生选择更可靠的预测模型。
+在医疗建模场景中，列线图通常用于预测患者某种疾病的发生概率或治疗后的预后。 通过将多个关键特征（如年龄、血压、肿瘤大小等）的回归系数标准化为点数，列线图将这些特征组合为一个总得分，并通过总分对应的标尺给出预测概率。这种方法便于临床医生直观地评估患者风险，辅助精准医疗决策。
 
-## R和Python相关包介绍
+## R和Python核心包介绍
 
 R包（R版本为4.4.2）：
-- pROC（3.8-3）：用于绘制和分析 ROC 曲线，支持 AUC 计算、置信区间估计、DeLong 检验等功能，常用于评估分类模型的性能。
+- rms（7.0-0）包内置列线图绘制功能，可以基于构建的逻辑回归模型快速绘制列线图
 
 Python包（Python版本为3.11.5）：
-- sklearn（1.5.2）： 负责计算绘制 ROC 曲线所需的关键指标，包括假阳性率（FPR）、真阳性率（TPR）和 AUC（曲线下面积），并提供相应的工具函数。
-- matplotlib（3.8.0）：用于将 sklearn 计算出的 FPR 和 TPR 以折线图的形式可视化，生成直观的 ROC 曲线图。
+- statsmodels（0.14.4）：用于逻辑回归建模
+- matplotlib（3.8.0）：用于基于计算结果绘制列线图
 
 ## R语言和Python效果对比
 
@@ -31,3 +31,9 @@ Python包（Python版本为3.11.5）：
     </td>
   </tr>
 </table>
+
+## 补充说明
+
+可以看到，上面的Points、Total Points以及最下面的概率线段都和R几乎完全一致，并在概率点位上的数值也一样，而其他线段和R的实现的数值结果也是相同的，所以不影响大家的使用。
+
+之所以显示效果不同在于，R的[nomogram函数的源码](https://github.com/harrelfe/rms/blob/master/R/nomogram.s)中生成刻度使用了[pretty函数](https://github.com/wch/r-source/blob/trunk/src/library/base/R/pretty.R)，这个函数的效果如[这个例子](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/pretty)所示，它能将刻度转成更好看的区间形式。我尝试过对这个pretty进行复现，但是由于其底层还调用了R的.Interval函数，而这个是R语言中用于调用底层C函数的接口，因此复现起来非常困难，Python目前也没有类似的pretty函数的三方库，所以这里我只是根据自己的理解实现了上面的`adj_range`函数。这是stackoverflow论坛对此的[讨论](https://stackoverflow.com/questions/43075617/python-function-equivalent-to-rs-pretty)

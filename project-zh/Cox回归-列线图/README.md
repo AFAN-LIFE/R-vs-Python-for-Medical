@@ -4,7 +4,7 @@ ROC曲线（Receiver Operating Characteristic Curve）通过不同预测阈值�
 
 例如预测某种癌症的风险。曲线下面积（AUC）越大，表示模型对阳性和阴性样本的区分能力越强，从而帮助医生选择更可靠的预测模型。
 
-## R和Python相关包介绍
+## R和Python核心包介绍
 
 R包（R版本为4.4.2）：
 - pROC（3.8-3）：用于绘制和分析 ROC 曲线，支持 AUC 计算、置信区间估计、DeLong 检验等功能，常用于评估分类模型的性能。
